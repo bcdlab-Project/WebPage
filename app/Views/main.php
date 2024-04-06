@@ -176,7 +176,11 @@
   </div> -->
 
   <!-- Our collaborator -->
-  <div id="collaborators" class="h-[1000px]"></div>
+<div id="collaborators" class="">
+  <h1 class="mb-6 text-3xl font-semibold text-center sm:text-4xl pt-14">Collaborators</h1>
+  <p class="text-xl text-center">Have some resource space on your server and want to help the project?<br>Be part of our project's journey by becoming one of our first collaborators! Let's work together to shape the future.</p>
+
+  <p class="p-3 mt-10 text-center rounded-lg xl:mx-52 bg-zinc-300/50 dark:bg-zinc-950/50">Collaboration opportunities will be available soon! If you're a company or want to reserve your spot, please send us an email at <a href="mailto:contact@mail.bcdlab.xyz" class="font-medium duration-150 text-bcdlab-d text-nowrap hover:opacity-75">contact@mail.bcdlab.xyz</a></p>
 
 </div>
 
