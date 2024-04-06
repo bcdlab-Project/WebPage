@@ -29,11 +29,6 @@ class Participate extends BaseController
     ];
 
     public function getIndex() {
-        helper('permissions');
-        if (loggedIn_Permission()) {
-            return redirect()->to(site_url('dashboard'));
-        }
-
         $data['title'] = 'Participate';
         $data['pageMargin'] = false;
         $data['view'] = 'participate';
@@ -72,11 +67,6 @@ class Participate extends BaseController
     }
 
     public function postIndex() {
-        helper('permissions');
-        if (loggedIn_Permission()) {
-            return $this->setResponseFormat('json')->respond(['ok' => false], 401);
-        }
-
         $data = $this->request->getPost(['requested_username','requested_email','requested_password','confpassword','why_participate','work_role','github_profile']);
         $rules = $this->validationRules;
 
