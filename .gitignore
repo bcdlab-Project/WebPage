@@ -1,0 +1,27 @@
+### CodeIgniter ###
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!system/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+writable
+phpmyadmin
+
+*.pem
+
+app/Config/GithubIntegration.php
+app/Config/DiscordIntegration.php
+app/Config/Email.php
+app/Config/Database.php
+
+node_modules
+
+vendor
