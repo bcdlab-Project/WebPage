@@ -1,3 +1,5 @@
+
+
 <div class="relative flex items-center justify-center w-full py-5 xl:py-8 scrollbar-hide" >
   <div class="absolute w-screen h-full bg-gradient-to-b from-[#5DE0E6] "></div>
   <div class="relative flex items-center justify-center w-full pt-1 pb-6 md:py-6">
@@ -29,6 +31,15 @@
   <p id="carousel-text" class="w-full px-0 text-center text-gray-400 md:px-4 2xl:w-1/2 md:w-2/3 sm:w-10/12 transition-[height] duration-500 ease-in-out h-min "></p> 
   <p id="carousel-text-imaginary" class="absolute w-full px-0 text-center text-sky-400/0 md:px-4 2xl:w-1/2 md:w-2/3 sm:w-10/12"></p> <!-- Imaginary text to calculate height -->
   <i id="carousel-loading" class="absolute px-0 text-gray-400 animate-spin" data-lucide="loader-circle"></i> <!-- Loading icon -->
+</div>
+
+<div class="flex items-center justify-center w-4/5 p-8 mx-auto my-8 bg-red-300 bg-opacity-50 rounded-lg animate-pulse">
+  <span class="mr-2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+      <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd"></path>
+    </svg>
+  </span>
+  <p>Participation Requests are now Available, but the service is still in development!!; You Can Check for Updates on <a class="link" href="https://github.com/bcdlab-project">Github</a>!</p>
 </div>
 
 

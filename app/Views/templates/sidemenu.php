@@ -20,9 +20,9 @@
                 <div class="px-4 py-4 border-t border-black dark:border-white">
                     <div>
                         <?php if (get_cookie('loggedIn')) { ?>
-                            <a class="justify-start w-full text-lg btn btn-ghost" href="/authentication/login"><i data-lucide="activity"></i> Dashboard</a>
+                            <a class="justify-start w-full text-lg btn btn-ghost" href="https://dash.bcdlab.xyz"><i data-lucide="activity"></i> Dashboard</a>
                         <?php } else { ?>
-                            <a class="justify-start w-full text-lg btn btn-ghost" href="/authentication/login"><i data-lucide="user"></i> Login</a>
+                            <a class="justify-start w-full text-lg btn btn-ghost" href="https://dash.bcdlab.xyz/login"><i data-lucide="user"></i> Login</a>
                         <?php } ?>
                     </div>
                 </div>
