@@ -2,7 +2,7 @@
     helper('cookie');
 
     if (!get_cookie('theme')) {
-        set_cookie('theme', 'dark',path: '/', httpOnly: false, expire: 3600*24*365);
+        set_cookie('theme', 'dark',path: '/', httpOnly: false, expire: 3600*24*365, domain: 'bcdlab.xyz');
         $theme = 'dark';
     } else {
         $theme = get_cookie('theme');
