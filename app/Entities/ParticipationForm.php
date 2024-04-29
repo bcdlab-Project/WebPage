@@ -6,21 +6,12 @@ use CodeIgniter\Entity\Entity;
 
 class ParticipationForm extends Entity
 {
-    function initializeEmailConfirmation() {
-        helper('text');
-        $token = random_string('alnum',32);
-
-        $EmailConfModel = model('ParticipationFormEmailConfirmationModel');
-
-        if ($EmailConfModel->find($this->attributes['id']) != null) {
+    function initializeEmailConfirmation($token) {
+        if ($this->attributes['email_verified'] == 1) {
             return false;
         }
 
-        echo json_encode($token);
-
-        $EmailConfModel->insert(['participation_form' => $this->attributes['id'], 'token' => password_hash($token, PASSWORD_DEFAULT)]);
-
-        $email = \Config\Services::email();
+        $email = service('email');
 
         $email->setTo($this->attributes['requested_email']);
         $email->setSubject('Confirm your email to participate');
@@ -30,51 +21,35 @@ class ParticipationForm extends Entity
     }
 
     function hasExpiredEmailConfirmation() {
-        $EmailConfModel = model('ParticipationFormEmailConfirmationModel');
-        $ParticipationFormModel = model('ParticipationFormModel');
-
-        $emailConf = $EmailConfModel->find($this->attributes['id']);
-
-        if ($emailConf == null) {
-            return true;
-        }
-
-        $result = $emailConf['expiration_date'] < date('Y-m-d H:i:s');
-
+        $result = strtotime('+1 hour',strtotime(model('FormModel')->find($this->attributes['id'])['created_at'])) < time();
         if ($result) {
-            $EmailConfModel->delete($this->attributes['id']);
-            $ParticipationFormModel->delete($this->attributes['id']);
+            model('ParticipationFormModel')->delete($this->attributes['id']);
+            model('FormModel')->delete($this->attributes['id']);
         }
 
         return $result;
     }
 
-    function confirmEmail($token) {
-        $EmailConfModel = model('ParticipationFormEmailConfirmationModel');
-
-        $emailConf = $EmailConfModel->find($this->attributes['id']);
-
-        if ($emailConf == null) {
-            return false;
-        }
-        
-        if ($emailConf['expiration_date'] < date('Y-m-d H:i:s')) {
-            return false;
-
-        }
-
-        if (!password_verify($token, $emailConf['token'])) {
+    function confirmEmail($token) {        
+        if ($this->hasExpiredEmailConfirmation()) {
             return false;
         }
 
-        $EmailConfModel->delete($this->attributes['id']);
+        if (!password_verify($token, $this->attributes['email_token'])) {
+            return false;
+        }
+
+        model('ParticipationFormModel')->update($this->attributes['id'], ['email_verified' => 1]);
         return true;
     }
 
-    function hasEmailConfirmed() {
-        $EmailConfModel = model('ParticipationFormEmailConfirmationModel');
+    function sendInfoEmail() {
+        $email = service('email');
 
-        return $EmailConfModel->find($this->attributes['id']) == null;
+        $email->setTo($this->attributes['requested_email']);
+        $email->setSubject('Participation Form Submitted');
+        $email->setMessage("Your participation form has been submitted successfully. We will get back to you soon.");
+
+        return $email->send();
     }
-    
 }

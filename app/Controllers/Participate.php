@@ -11,18 +11,14 @@ class Participate extends BaseController
     private $validationRules = [
         'requested_username' => 'required|max_length[25]',
         'requested_email'    => 'required|max_length[254]|valid_email',
-        'requested_password' => 'required|max_length[255]|min_length[10]',
-        'confpassword' => 'required|max_length[255]|matches[requested_password]',
         'why_participate' => 'required',
         'work_role' => 'max_length[25]',
-        'github_profile' => 'max_length[25]|valid_url_strict'
+        'github_profile' => 'max_length[150]|valid_url_strict'
     ];
 
     private $paramAlias = [
         'requested_username' => 'Username',
         'requested_email'    => 'Email',
-        'requested_password' => 'Password',
-        'confpassword' => 'Confirmation Password',
         'why_participate' => 'Why participate field',
         'work_role' => 'Work Role',
         'github_profile' => 'GitHub Profile field'
@@ -41,13 +37,13 @@ class Participate extends BaseController
     }
 
     public function postValidate($part) {
-        $rulesFirst = array_intersect_key($this->validationRules, array_flip(['requested_username','requested_email','requested_password','confpassword']));
+        $rulesFirst = array_intersect_key($this->validationRules, array_flip(['requested_username','requested_email']));
 
         if ($part == 'first') {
-            $data = $this->request->getPost(['requested_username','requested_email','requested_password','confpassword']);
-            $rules = $rulesFirst; // uses only the first 4 rules
+            $data = $this->request->getPost(['requested_username','requested_email']);
+            $rules = $rulesFirst; // uses only the first 2 rules
         } else {
-            $data = $this->request->getPost(['requested_username','requested_email','requested_password','confpassword','why_participate','work_role','github_profile']);
+            $data = $this->request->getPost(['requested_username','requested_email','why_participate','work_role','github_profile']);
             $rules = $this->validationRules; // uses the page rules
         }
 
@@ -67,7 +63,9 @@ class Participate extends BaseController
     }
 
     public function postIndex() {
-        $data = $this->request->getPost(['requested_username','requested_email','requested_password','confpassword','why_participate','work_role','github_profile']);
+        helper('text');
+
+        $data = $this->request->getPost(['requested_username','requested_email','why_participate','work_role','github_profile']);
         $rules = $this->validationRules;
 
         if (empty($data['github_profile'])) { $data['github_profile'] = null; unset($rules['github_profile']);}
@@ -78,19 +76,14 @@ class Participate extends BaseController
             foreach ($errors as $key => $value) {
                 $errors[$key] =  str_replace($key,$this->paramAlias[$key],$value);
             }
-
             return $this->setResponseFormat('json')->respond($errors, 200);
         } else {
-            $data["requested_password"] = password_hash($data['requested_password'], PASSWORD_DEFAULT);
-
-
+            $token = random_string('alnum',32);
+            $data["email_token"] = password_hash($token, PASSWORD_DEFAULT);
             $data['id'] = model('FormModel')->insert(['type' => 1],true);
-
-            echo $data['id'];
-
             $result = model('ParticipationFormModel')->insert($data);
             if ($result) {
-                model('ParticipationFormModel')->find($result)->initializeEmailConfirmation();
+                model('ParticipationFormModel')->find($result)->initializeEmailConfirmation($token);
                 return $this->setResponseFormat('json')->respond(['ok' => true], 200);
             } else {
                 return $this->setResponseFormat('json')->respond(['ok' => false], 200);
@@ -111,12 +104,11 @@ class Participate extends BaseController
         if (!isset($inputs['id']) || !isset($inputs['token'])) {
             $data['message'] = 'Something went wrong. Please try again later.';
         } else {
-            $model = model('ParticipationFormModel');
-            $form = $model->find($inputs['id']);
+            $form = model('ParticipationFormModel')->find($inputs['id']);
     
             if ($form == null) {
                 $data['message'] = 'Something went wrong. Please try again later.';
-            } else if ($form->hasEmailConfirmed()) {
+            } else if ($form->email_verified == 1) {
                 $data['messageok'] = true;
                 $data['message'] = 'Email already confirmed';
             } else if ($form->hasExpiredEmailConfirmation()) {
@@ -124,6 +116,7 @@ class Participate extends BaseController
             } else if ($form->confirmEmail($inputs['token'])) {
                 $data['messageok'] = true;
                 $data['message'] = 'Email confirmed successfully';
+                $form->sendInfoEmail();
             } else {
                 $data['message'] = 'Something went wrong. Please try again later.';
             }

@@ -22,15 +22,15 @@
         <div id="first" class="space-y-5">
             <div>
                 <label class="font-medium">Username</label>
-                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="text" name="requested_username" id="requested_username" required>
+                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="text" name="requested_username" id="requested_username" required placeholder="MyUsername">
                 <span class="text-red-500" id="requested_username-error"></span>
             </div>
             <div>
                 <label class="font-medium">Email Address</label>
-                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="email" name="requested_email" id="requested_email" required>
+                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="email" name="requested_email" id="requested_email" required placeholder="...@mail.com">
                 <span class="text-red-500" id="requested_email-error"></span>
             </div>
-            <div>
+            <!-- <div>
                 <label class="font-medium">Password</label>
                 <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="password" name="requested_password" id="requested_password" required>
                 <span class="text-red-500" id="requested_password-error"></span>
@@ -39,7 +39,7 @@
                 <label class="font-medium">Password (again)</label>
                 <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="password" name="confpassword" id="confpassword" required>
                 <span class="text-red-500" id="confpassword-error"></span>
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-end">
                 <button id="Next" type="button" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Next</button>
@@ -49,17 +49,17 @@
         <div id="second" class="hidden space-y-5">
             <div>
                 <label class="font-medium">Why Participate</label>
-                <textarea class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" name="why_participate" id="why_participate" rows="5" required></textarea>
+                <textarea class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" name="why_participate" id="why_participate" rows="5" required placeholder="I would want to participate beacuse ..."></textarea>
                 <span class="text-red-500" id="why_participate-error"></span>
             </div>
             <div>
-                <label class="font-medium">Work Role</label>
-                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="text" name="work_role" id="work_role">
+                <label class="font-medium">Work Role <span class="text-gray-400">(optional)</span></label>
+                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="text" name="work_role" id="work_role" placeholder="Developer / Freelancer / Web Designer / ...">
                 <span class="text-red-500" id="work_role-error"></span>
             </div>
             <div>
-                <label class="font-medium">GitHub Profile</label>
-                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="url" name="github_profile" id="github_profile">
+                <label class="font-medium">GitHub Profile <span class="text-gray-400">(optional)</span></label>
+                <input class="w-full px-3 py-2 mt-2 border rounded-lg shadow-sm outline-none" type="url" name="github_profile" id="github_profile" placeholder="https://github.com/MyGithubUsername">
                 <span class="text-red-500" id="github_profile-error"></span>
             </div>
             <div class="flex items-center justify-between">

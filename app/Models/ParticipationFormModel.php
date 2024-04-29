@@ -14,7 +14,7 @@ class ParticipationFormModel extends Model
     protected $returnType = \App\Entities\ParticipationForm::class;
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['id','requested_username', 'requested_password', 'requested_email', 'why_participate', 'work_role','github_url'];
+    protected $allowedFields = ['id','requested_username', 'requested_email', 'email_verified', 'email_token', 'why_participate', 'work_role','github_url'];
 
     protected $useTimestamps = false;
 
