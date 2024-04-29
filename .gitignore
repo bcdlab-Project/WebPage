@@ -25,3 +25,5 @@ app/Config/Database.php
 node_modules
 
 vendor
+
+Production.zip
