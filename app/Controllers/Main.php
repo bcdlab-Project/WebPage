@@ -11,7 +11,6 @@ class Main extends BaseController
 
         return view('templates/header', $data)
             . view('main')
-            . view('templates/footer') 
-            . view('templates/sidemenu');
+            . view('templates/footer');
     }
 }

@@ -24,3 +24,15 @@ function changeTheme() {
         document.cookie = 'theme=dark;path=/;samesite=Lax;expires=' + expire.toGMTString()
     }
 }
+
+function openSidemenu() {
+    document.getElementById('sidemenu').dataset.sidemenuhidden = 'false';
+    document.getElementById('sidemenu-overlay').dataset.sidemenuhidden = 'false';
+    lockScroll();
+}
+
+function closeSidemenu() {
+    document.getElementById('sidemenu').dataset.sidemenuhidden = 'true';
+    document.getElementById('sidemenu-overlay').dataset.sidemenuhidden = 'true';
+    unlockScroll();
+}

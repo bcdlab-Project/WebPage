@@ -1,5 +1,3 @@
-
-
 <div class="relative flex items-center justify-center w-full py-5 xl:py-8 scrollbar-hide" >
   <div class="absolute w-screen h-full bg-gradient-to-b from-[#5DE0E6] "></div>
   <div class="relative flex items-center justify-center w-full pt-1 pb-6 md:py-6">
@@ -42,8 +40,6 @@
   <p>Participation Requests are now Available, but the service is still in development!!; You Can Check for Updates on <a class="link" href="https://github.com/bcdlab-project">Github</a>!</p>
 </div>
 
-
-
 <div class="sticky top-0 z-20">
   <div class="relative flex items-center justify-center w-full mt-8">
     <div class="absolute top-0 w-screen h-full bg-white dark:bg-zinc-800"></div>
@@ -79,11 +75,9 @@
   </div>
 </div>
 
-
 <div class="flex flex-col gap-4">
 
 <!-- About Us -->
-
   <div id="about" class="flex flex-col gap-6">
     <h1 class="text-3xl font-semibold sm:text-4xl pt-14">About Us</h1>
     <div class="flex justify-start">
@@ -116,7 +110,6 @@
   </div>
 
   <!-- Join Us -->
-
   <div id="join" class="flex flex-col">
     <h1 class="mb-6 text-3xl font-semibold sm:text-4xl pt-14">Join Us in Building Something Great!</h1>
     <p class="text-justify">Our project thrives on community collaboration, and we're excited to invite you to be a part of it. Your involvement can make a significant impact, and together, we can achieve something extraordinary. We currently have various roles available, each offering a unique opportunity for you to contribute to the growth and success of our community. Explore the available roles below and find the perfect fit for your skills and interests:</p>
@@ -179,11 +172,8 @@
   </div>
 
 
-
-
   <!-- Some Projects -->
   <!-- <div id="projects" class="h-[1000px]">
-    
   </div> -->
 
   <!-- Our collaborator -->
@@ -196,7 +186,6 @@
 </div>
 
 <!-- Contact Us -->
-
 <div id="contact" class="relative flex items-center justify-center w-full pb-8 pt-28 md:pb-12">
   <div class="absolute w-screen h-full bg-gradient-to-t from-[#004AAD]"></div>
   <div class="z-10 text-gray-900 dark:text-gray-300">

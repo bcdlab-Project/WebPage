@@ -32,8 +32,7 @@ class Participate extends BaseController
 
         return view('templates/header', $data)
             . view('participate/main')
-            . view('templates/footer') 
-            . view('templates/sidemenu');
+            . view('templates/footer');
     }
 
     public function postValidate($part) {
@@ -124,7 +123,6 @@ class Participate extends BaseController
 
         return view('templates/header', $data)
             . view('participate/confirmEmail')
-            . view('templates/footer') 
-            . view('templates/sidemenu');
+            . view('templates/footer');
     }
 }

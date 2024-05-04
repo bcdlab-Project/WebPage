@@ -49,11 +49,7 @@
                 <button onclick="changeTheme()" class="btn btn-ghost btn-circle" href="/utilities/changetheme"><i id="changeTheme-icon-sun" class="<?=($theme === 'dark') ? '' : 'hidden'?>" data-lucide="sun"></i><i id="changeTheme-icon-moon" class="<?=($theme === 'dark') ? 'hidden' : ''?>" data-lucide="moon"></i></button>
                 <button class="btn btn-ghost btn-circle md:hidden" onclick="openSidemenu()"><i data-lucide="menu"></i></button>
                 <div class="hidden md:block">
-                    <?php if (get_cookie('loggedIn')) { ?>
-                        <a class="px-1 text-base btn btn-ghost" href="https://dash.bcdlab.xyz">Dasboard</a>
-                    <?php } else { ?>
-                        <a class="px-1 text-base btn btn-ghost" href="https://dash.bcdlab.xyz/login">Login</a>
-                    <?php } ?>
+                    <a class="px-1 text-base btn btn-ghost" href="https://dash.bcdlab.xyz/login">Login</a>
                 </div>
             </div>
         </div>
