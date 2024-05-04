@@ -38,6 +38,7 @@
     ?>
 
     <script src="<?=base_url()?>js/scrollLock.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>lucide.createIcons();</script>
 </body>
 </html>
